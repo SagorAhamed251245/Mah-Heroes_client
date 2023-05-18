@@ -22,8 +22,9 @@ const ShopCategory = () => {
         const categoryFilter = allProducts?.filter(product => product.sub_category === sub_category)
         setCategory_filter(categoryFilter)
     }, [sub_category])
-
-
+     
+   
+ 
     return (
         <div className='mt-20 w-11/12 mx-auto'>
             <Tabs >
