@@ -18,7 +18,7 @@ const NavBar = () => {
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/alltoys'>All Toys</Link></li>
                     <li><Link to='/blogs'>Blogs</Link></li>
-                    <li><Link to='/mytoys'>My Toys</Link></li>
+                   {user &&  <li><Link to='/mytoys'>My Toys</Link></li>}
 
 
                 </ul>
@@ -28,17 +28,21 @@ const NavBar = () => {
                 <img className="w-14 lg:hidden" src="herologo-1.png" alt="" />
 
                <div className="hidden lg:inline-flex">
-               <ul className="menu menu-horizontal px-1 ">
-                    <li><Link to='/login'>Login</Link></li>
-                    <li><Link to='/singup'>SingUp</Link></li>
-                    <li><Link onClick={logout} to='/login'>Logout</Link></li>
+               <div className="menu menu-horizontal px-1 gap-3 ">
+                    
+                    {user ? <>
+                        <Link onClick={logout} to='/login'><button className="btn btn-primary text-white font-bold">Logout</button></Link>
                     <div className="avatar online">
                         <div className="w-10 mask mask-squircle">
                             <img src={user?.photoURL} />
                         </div>
                     </div>
+                    </> : <>
+                    <Link to='/login'><button className="btn btn-primary text-white font-bold">Login</button></Link>
+                    <Link to='/singup'><button className="btn btn-primary text-white font-bold">SingUp</button></Link>
+                    </>}
 
-                </ul>
+                </div>
                </div>
             </div>
         </div>
