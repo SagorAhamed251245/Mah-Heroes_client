@@ -12,10 +12,10 @@ const NavBar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><Link>Home</Link></li>
-                    <li><Link>All Toys</Link></li>
-                    <li><Link>Blogs</Link></li>
-                    <li><Link>My Toys</Link></li>
+                    <li><Link to='/'>Home</Link></li>
+                    <li><Link to='/alltoys'>All Toys</Link></li>
+                    <li><Link to='/blogs'>Blogs</Link></li>
+                    <li><Link to='/mytoys'>My Toys</Link></li>
 
 
                 </ul>
@@ -26,9 +26,9 @@ const NavBar = () => {
 
                <div className="hidden lg:inline-flex">
                <ul className="menu menu-horizontal px-1 ">
-                    <li><Link>Login</Link></li>
-                    <li><Link>SingUp</Link></li>
-                    <li><Link>Logout</Link></li>
+                    <li><Link to='/login'>Login</Link></li>
+                    <li><Link to='/singup'>SingUp</Link></li>
+                    <li><Link to='/login'>Logout</Link></li>
                     <div className="avatar online">
                         <div className="w-10 mask mask-squircle">
                             <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
