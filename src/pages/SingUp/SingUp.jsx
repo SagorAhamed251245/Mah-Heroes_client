@@ -1,7 +1,31 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const SingUp = () => {
+    const { createNewUser , updateUserProfile } = useContext(AuthContext)
+
+     const handelCreateUser = (event) => {
+        
+        event.preventDefault();
+        const form = event.target;
+        const userName = form.name.value ;
+        const email = form.email.value ;
+        const password = form.password.value ;
+        const photo = form.photo_url.value ;
+
+        createNewUser(email , password)
+        .then(result => {
+            updateUserProfile(userName, photo)
+            console.log(result.user);
+            
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+
+     }
     return (
         <div className="hero min-h-screen bg-base-200   font-bold">
             <div className="hero-content flex-col-reverse lg:flex-row-reverse">
@@ -11,7 +35,7 @@ const SingUp = () => {
                     <h1 className="text-6xl text-center font-bold text-white">Time To Save The World <span className="text-primary">Hero</span></h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <from className="card-body">
+                    <form onSubmit={handelCreateUser} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white">Name</span>
@@ -49,7 +73,7 @@ const SingUp = () => {
                         <div className="text-sm font-medium text-white">
                             Have an account? <Link to='/login' className="text-primary hover:underline dark:text-green-500">Login</Link>
                         </div>
-                    </from>
+                    </form>
 
 
                 </div>
