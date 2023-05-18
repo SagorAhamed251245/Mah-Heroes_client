@@ -1,7 +1,26 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Login = () => {
+    const {loginUser} = useContext(AuthContext);
+
+    const handelLoginUser = () => {
+        event.preventDefault();
+        const form = event.target;
+        
+        const email = form.email.value ;
+        const password = form.password.value ;
+        
+        loginUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+    }
     return (
         <div className="hero min-h-screen bg-base-200   font-bold">
             <div className="hero-content flex-col-reverse lg:flex-row-reverse">
@@ -11,23 +30,23 @@ const Login = () => {
                     <h1 className="text-6xl text-center font-bold text-white">Let's Go <span className="text-primary">Hero</span></h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <from className="card-body">
+                    <form onSubmit={handelLoginUser} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white">Email</span>
                             </label>
-                            <input name='name' type="text" placeholder="email" className="input input-bordered" />
+                            <input name='email' type="email" placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white">Password</span>
                             </label>
-                            <input name='email' type="email" placeholder="password" className="input input-bordered" />
+                            <input name='password' type="password" placeholder="password" className="input input-bordered" />
 
                         </div>
                         <div className=" mt-6">
                             <input type="submit" className="btn btn-primary w-full text-white font-bold" value="Login"></input>
-                            <input type="submit" value="" />
+                
                         </div>
 
                         <div className='mb-5 mt-3'>
@@ -37,7 +56,7 @@ const Login = () => {
                         <div className="text-sm font-medium text-white">
                             Not registered? <Link to='/singup' className="text-primary hover:underline dark:text-green-500">Create account</Link>
                         </div>
-                    </from>
+                    </form>
 
 
                 </div>
