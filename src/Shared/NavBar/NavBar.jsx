@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import DropDown from "./DropDown";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const NavBar = () => {
+    const {logout, user} = useContext(AuthContext)
     return (
         <div className="navbar  font-bold text-white">
             <div className="navbar-start">
@@ -28,10 +31,10 @@ const NavBar = () => {
                <ul className="menu menu-horizontal px-1 ">
                     <li><Link to='/login'>Login</Link></li>
                     <li><Link to='/singup'>SingUp</Link></li>
-                    <li><Link to='/login'>Logout</Link></li>
+                    <li><Link onClick={logout} to='/login'>Logout</Link></li>
                     <div className="avatar online">
                         <div className="w-10 mask mask-squircle">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            <img src={user?.photoURL} />
                         </div>
                     </div>
 
