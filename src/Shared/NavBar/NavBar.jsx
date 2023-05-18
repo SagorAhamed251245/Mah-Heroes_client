@@ -14,7 +14,7 @@ const NavBar = () => {
                 <img className="w-14 lg:inline-block hidden" src="herologo-1.png" alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="flex gap-5">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/alltoys'>All Toys</Link></li>
                     <li><Link to='/blogs'>Blogs</Link></li>
