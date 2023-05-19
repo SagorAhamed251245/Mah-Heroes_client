@@ -13,6 +13,7 @@ import SingUp from "../pages/SingUp/SingUp";
 import PrivateRoute from "./PrivateRoute";
 import ToyInfo from "../pages/ToyInfo/ToyInfo";
 import AddToy from "../pages/AddToy/AddToy";
+import UpdateMyToy from "../pages/MyToys/UpdateMyToy";
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <MyToys></MyToys>
         </PrivateRoute>
+      },
+      {
+        path:'/updateToy/:id',
+        element: <UpdateMyToy></UpdateMyToy>,
+        loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
       },
       {
         path: '/toy/:id',

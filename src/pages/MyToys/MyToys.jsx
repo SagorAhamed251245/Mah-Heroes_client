@@ -69,7 +69,7 @@ const MyToys = () => {
               <td>{toy.seller_name}</td>
               <td className="flex  flex-col gap-3 items-center justify-center">
                 <Link to={`/toy/${toy._id}`}><FaInfoCircle className="text-sky-500 text-3xl"></FaInfoCircle></Link>
-                <Link ><img className="w-7" src="../../../public/updated.png" alt="" /></Link>
+                <Link to={`/updateToy/${toy._id}`} ><img className="w-7" src="../../../public/updated.png" alt="" /></Link>
                 <Link onClick={()=>handelDeleteToy(toy._id)} ><img className="w-7" src="../../../public/remove.png" alt="" /></Link>
               </td>
 
