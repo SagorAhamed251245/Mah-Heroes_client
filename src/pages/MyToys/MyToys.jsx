@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import { FaInfoCircle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const MyToys = () => {
@@ -16,11 +17,42 @@ const MyToys = () => {
 
   const handelDeleteToy = (id) => {
 
-    fetch(`http://localhost:5000/deleteProduct/${id}`, {
-      method: 'DELETE'
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(result => {
+      if (result.isConfirmed) {
+
+        fetch(`http://localhost:5000/deleteProduct/${id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(result => {
+            console.log(result);
+            if (result.deletedCount > 0) {
+              Swal.fire(
+                'Deleted!',
+                'Your Toy  has been deleted.',
+                'success'
+              )
+              const remaining = myToy.filter(toy => toy._id !== id);
+              setMyToy(remaining);
+            }
+          })
+
+      }
+
     })
 
-  }  
+
+
+  }
 
   console.log(myToy);
 
@@ -70,7 +102,7 @@ const MyToys = () => {
               <td className="flex  flex-col gap-3 items-center justify-center">
                 <Link to={`/toy/${toy._id}`}><FaInfoCircle className="text-sky-500 text-3xl"></FaInfoCircle></Link>
                 <Link to={`/updateToy/${toy._id}`} ><img className="w-7" src="../../../public/updated.png" alt="" /></Link>
-                <Link onClick={()=>handelDeleteToy(toy._id)} ><img className="w-7" src="../../../public/remove.png" alt="" /></Link>
+                <Link onClick={() => handelDeleteToy(toy._id)} ><img className="w-7" src="../../../public/remove.png" alt="" /></Link>
               </td>
 
 

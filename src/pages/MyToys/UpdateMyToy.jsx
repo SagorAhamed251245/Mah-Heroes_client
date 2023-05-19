@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 
 const UpdateMyToy = () => {
@@ -27,6 +28,13 @@ const UpdateMyToy = () => {
         }).then(res => res.json())
         .then(result => {
             console.log(result);
+            if (result.modifiedCount > 0) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your Toy info Updated Successful',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })}
         })
 
 
@@ -59,7 +67,7 @@ const UpdateMyToy = () => {
                                         <label className="label">
                                             <span className="label-text">Price</span>
                                         </label>
-                                        <input  {...register("price", { min: 0, required: true })} type="number" placeholder="0" className="input input-bordered" />
+                                        <input  {...register("price", { min: 0,  })} type="number" placeholder="0" className="input input-bordered" />
 
                                     </div>
 
@@ -70,7 +78,7 @@ const UpdateMyToy = () => {
                                         <label className="label">
                                             <span className="label-text">Available Quantity</span>
                                         </label>
-                                        <input  {...register("available_quantity", { min: 1, required: true })} type="number" placeholder="0" className="input input-bordered" />
+                                        <input  {...register("available_quantity", { min: 1,  })} type="number" placeholder="0" className="input input-bordered" />
 
                                     </div>
 
@@ -80,7 +88,7 @@ const UpdateMyToy = () => {
                                         <label className="label">
                                             <span className="label-text">Description</span>
                                         </label>
-                                        <input  {...register("description", { required: true })} type="text" placeholder="Description" className="input input-bordered" />
+                                        <input  {...register("description" )} type="text" placeholder="Description" className="input input-bordered" />
 
                                     </div>
 
