@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddToy = () => {
+ const {user}= useContext(AuthContext)
+
+
     const {
         register,
         handleSubmit,
@@ -8,22 +13,23 @@ const AddToy = () => {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+         fetch(`http://localhost:5000/addProduct`, {
+            method: 'POST',
+            headers: {
+                'content-type' :  'application/json'
+            },
+            body: JSON.stringify(data)
+         })
+         .then(res => res.json())
+         .then(result => {
+            console.log(result);
+         })
+         
+       };
     return (
         <div>
-            <div>
-                {/*  <form onSubmit={handleSubmit(onSubmit)}>
-               
-                <input defaultValue="test" {...register("name")} />
-
-                
-                <input {...register("email", { required: true })} />
-                
-                {errors.exampleRequired && <span>This field is required</span>}
-
-                <input type="submit" />
-            </form> */}
-            </div>
+            
             <div>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex w-full">
@@ -38,7 +44,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Seller Name</span>
                                             </label>
-                                            <input type="text" {...register("seller_name")} placeholder="Seller Name" className="input input-bordered" />
+                                            <input type="text" {...register("seller_name")} placeholder="Seller Name" value={user?.displayName} className="input input-bordered" />
                                         </div>
 
                                         {/* 1  */}
@@ -46,7 +52,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Seller Email</span>
                                             </label>
-                                            <input {...register("seller_email")} type="email" placeholder="Email" className="input input-bordered" />
+                                            <input {...register("seller_email")} type="email" placeholder="Email" value={user?.email} className="input input-bordered" />
 
                                         </div>
 
@@ -55,7 +61,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Category</span>
                                             </label>
-                                            <input {...register("category")} type="text" placeholder="Action Figures" className="input input-bordered" />
+                                            <input {...register("category")} type="text" placeholder="Action Figures" defaultValue="Action Figures" className="input input-bordered" />
 
                                         </div>
 
