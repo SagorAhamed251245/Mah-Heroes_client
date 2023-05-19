@@ -1,25 +1,40 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Login = () => {
-    const {loginUser} = useContext(AuthContext);
+    const { loginUser } = useContext(AuthContext);
+    const [error, setError] = useState('')
+    const [successful, setSuccessful] = useState('')
+    const navigate = useNavigate()
+
+    const location = useLocation();
+
+    console.log(location);
 
     const handelLoginUser = () => {
         event.preventDefault();
         const form = event.target;
-        
-        const email = form.email.value ;
-        const password = form.password.value ;
-        
-        loginUser(email, password)
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+        if (password.length < 6) {
+            setError('Password Must Be 6 Character')
+        }
+        else {
+            loginUser(email, password)
+                .then(result => {
+                    console.log(result.user);
+                    setSuccessful('Successfully Login')
+                    {location.state?.from?.pathname ? navigate(location.state.from.pathname) : navigate('/') }
+
+                })
+                .catch(error => {
+                    setError(error.message);
+                })
+        }
     }
     return (
         <div className="hero min-h-screen bg-base-200   font-bold">
@@ -46,7 +61,7 @@ const Login = () => {
                         </div>
                         <div className=" mt-6">
                             <input type="submit" className="btn btn-primary w-full text-white font-bold" value="Login"></input>
-                
+
                         </div>
 
                         <div className='mb-5 mt-3'>
@@ -54,8 +69,12 @@ const Login = () => {
                                 Login With Google</button>
                         </div>
                         <div className="text-sm font-medium text-white">
-                            Not registered? <Link to='/singup' className="text-primary hover:underline dark:text-green-500">Create account</Link>
+                            Not registered? <Link state={location } to='/singup' className="text-primary hover:underline dark:text-green-500">Create account</Link>
                         </div>
+
+                        {
+                            error ? <p className='text-red-500 text-lg text-center font-bold'>{error}</p> : <p className='text-green-500 text-lg text-center  font-bold'>{successful}</p>
+                        }
                     </form>
 
 

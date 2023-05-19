@@ -56,7 +56,7 @@ const ToyInfo = () => {
                             <span className=' font-semibold '> {description}</span>
 
                         </p>
-                        <button className="btn btn-primary mt-5 font-bold text-white">Buy Now</button>
+                        
                     </div>
 
                 </div>

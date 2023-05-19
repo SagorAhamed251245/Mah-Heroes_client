@@ -1,31 +1,41 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 
 const SingUp = () => {
-    const { createNewUser , updateUserProfile } = useContext(AuthContext)
+    const { createNewUser, updateUserProfile } = useContext(AuthContext)
+    const [error, setError] = useState('')
+    const [successful, setSuccessful] = useState('')
+    const navigate = useNavigate()
 
-     const handelCreateUser = (event) => {
-        
+    const location = useLocation();
+
+    console.log(location);
+
+    const handelCreateUser = (event) => {
+
         event.preventDefault();
         const form = event.target;
-        const userName = form.name.value ;
-        const email = form.email.value ;
-        const password = form.password.value ;
-        const photo = form.photo_url.value ;
+        const userName = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo = form.photo_url.value;
 
-        createNewUser(email , password)
-        .then(result => {
-            updateUserProfile(userName, photo)
-            console.log(result.user);
-            
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+        createNewUser(email, password)
+            .then(result => {
+                updateUserProfile(userName, photo)
+                console.log(result.user);
+                setSuccessful('Successfully Login')
+                { location.state?.state?.from?.pathname ? navigate(location.state.state.from.pathname) : navigate('/') }
 
-     }
+            })
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message)
+            })
+
+    }
     return (
         <div className="hero min-h-screen bg-base-200   font-bold">
             <div className="hero-content flex-col-reverse lg:flex-row-reverse">
@@ -73,6 +83,9 @@ const SingUp = () => {
                         <div className="text-sm font-medium text-white">
                             Have an account? <Link to='/login' className="text-primary hover:underline dark:text-green-500">Login</Link>
                         </div>
+                        {
+                            error ? <p className='text-red-500 text-lg text-center font-bold'>{error}</p> : <p className='text-green-500 text-lg text-center  font-bold'>{successful}</p>
+                        }
                     </form>
 
 
