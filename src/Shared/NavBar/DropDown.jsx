@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 
@@ -12,22 +12,36 @@ const DropDown = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
             <ul tabIndex={0} className="bg-base-100 flex flex-col justify-center items-center gap-5 dropdown-content mt-3 p-2  shadow  rounded-box w-52">
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/alltoys'>All Toys</Link></li>
-                <li><Link to='/blogs'>Blogs</Link></li>
+                <li><NavLink to='/' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                >Home</NavLink></li>
+
+                <li><NavLink to='/alltoys' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                >All Toys</NavLink></li>
+
+                <li><NavLink to='/blogs' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                >Blogs</NavLink></li>
 
                 {user ? <>
-                    <li><Link to='/mytoys'>My Toys</Link></li>
-                    <li><Link to='/addtoy'>Add A Toy</Link></li>
-                    <Link onClick={logout} to='/'><button className="btn btn-primary text-white font-bold">Logout</button></Link>
+                    <li><NavLink to='/mytoys' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                    >My Toys</NavLink></li>
+
+                    <li><NavLink to='/addtoy'className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                    >Add A Toy</NavLink></li>
+
+                    <NavLink onClick={logout} to='/' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                    ><button className="btn btn-primary text-white font-bold">Logout</button></NavLink>
+
                     <div className="avatar online">
                         <div className="w-10 mask mask-squircle">
                             <img src={user?.photoURL} />
                         </div>
                     </div>
                 </> : <>
-                    <Link to='/login'><button className="btn btn-primary text-white font-bold">Login</button></Link>
-                    <Link to='/singup'><button className="btn btn-primary text-white font-bold">SingUp</button></Link>
+                    <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                    ><button className="btn btn-primary text-white font-bold">Login</button></NavLink>
+
+                    <NavLink to='/singup' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                    ><button className="btn btn-primary text-white font-bold">SingUp</button></NavLink>
                 </>}
 
             </ul>
