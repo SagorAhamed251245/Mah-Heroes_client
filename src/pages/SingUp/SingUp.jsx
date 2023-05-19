@@ -4,7 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 
 const SingUp = () => {
-    const { createNewUser, updateUserProfile } = useContext(AuthContext)
+    const { createNewUser, updateUserProfile , singinWithGoogle} = useContext(AuthContext)
     const [error, setError] = useState('')
     const [successful, setSuccessful] = useState('')
     const navigate = useNavigate()
@@ -35,6 +35,16 @@ const SingUp = () => {
                 setError(error.message)
             })
 
+    }
+
+    const handelGoogleSingin = () => {
+        singinWithGoogle()
+            .then(result => {
+                { location.state?.from?.pathname ? navigate(location.state.from.pathname) : navigate('/') }
+            })
+            .catch(error => {
+                setError(error.message)
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200   font-bold">
@@ -76,17 +86,20 @@ const SingUp = () => {
                             <input type="submit" value="" />
                         </div>
 
-                        <div className='mb-5 mt-3'>
-                            <button className="w-full text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
-                                Sing up With Google</button>
-                        </div>
+                        
                         <div className="text-sm font-medium text-white">
                             Have an account? <Link to='/login' className="text-primary hover:underline dark:text-green-500">Login</Link>
                         </div>
-                        {
-                            error ? <p className='text-red-500 text-lg text-center font-bold'>{error}</p> : <p className='text-green-500 text-lg text-center  font-bold'>{successful}</p>
-                        }
+                        
                     </form>
+                    <div className=' mb-1 w-10/12 mx-auto'>
+                        <button onClick={handelGoogleSingin} className="w-full text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
+                            SingUp With Google</button>
+                    </div>
+                    {
+                        error ? <p className='text-red-500 text-lg text-center font-bold'>{error}</p> : <p className='text-green-500 text-lg text-center  font-bold'>{successful}</p>
+                    }
+
 
 
                 </div>

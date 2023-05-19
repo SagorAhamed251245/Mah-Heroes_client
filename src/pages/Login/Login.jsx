@@ -4,7 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, singinWithGoogle } = useContext(AuthContext);
     const [error, setError] = useState('')
     const [successful, setSuccessful] = useState('')
     const navigate = useNavigate()
@@ -28,13 +28,23 @@ const Login = () => {
                 .then(result => {
                     console.log(result.user);
                     setSuccessful('Successfully Login')
-                    {location.state?.from?.pathname ? navigate(location.state.from.pathname) : navigate('/') }
+                    { location.state?.from?.pathname ? navigate(location.state.from.pathname) : navigate('/') }
 
                 })
                 .catch(error => {
                     setError(error.message);
                 })
         }
+    }
+
+    const handelGoogleLogin = () => {
+        singinWithGoogle()
+            .then(result => {
+                { location.state?.from?.pathname ? navigate(location.state.from.pathname) : navigate('/') }
+            })
+            .catch(error => {
+                setError(error.message)
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200   font-bold">
@@ -64,19 +74,21 @@ const Login = () => {
 
                         </div>
 
-                        <div className='mb-5 mt-3'>
-                            <button className="w-full text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
-                                Login With Google</button>
-                        </div>
+
                         <div className="text-sm font-medium text-white">
-                            Not registered? <Link state={location } to='/singup' className="text-primary hover:underline dark:text-green-500">Create account</Link>
+                            Not registered? <Link state={location} to='/singup' className="text-primary hover:underline dark:text-green-500">Create account</Link>
                         </div>
 
-                        {
-                            error ? <p className='text-red-500 text-lg text-center font-bold'>{error}</p> : <p className='text-green-500 text-lg text-center  font-bold'>{successful}</p>
-                        }
+
                     </form>
 
+                    <div className=' mb-1 w-10/12 mx-auto'>
+                        <button onClick={handelGoogleLogin} className="w-full text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
+                            Login With Google</button>
+                    </div>
+                    {
+                        error ? <p className='text-red-500 text-lg text-center font-bold'>{error}</p> : <p className='text-green-500 text-lg text-center  font-bold'>{successful}</p>
+                    }
 
                 </div>
             </div>
