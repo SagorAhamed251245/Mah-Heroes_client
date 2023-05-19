@@ -17,6 +17,7 @@ const DropDown = () => {
 
                 {user ? <>
                     <li><Link to='/mytoys'>My Toys</Link></li>
+                    <li><Link to='/addtoy'>Add A Toy</Link></li>
                     <Link onClick={logout} to='/'><button className="btn btn-primary text-white font-bold">Logout</button></Link>
                     <div className="avatar online">
                         <div className="w-10 mask mask-squircle">
