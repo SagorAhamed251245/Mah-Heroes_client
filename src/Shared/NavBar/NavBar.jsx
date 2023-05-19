@@ -5,9 +5,11 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 
 const NavBar = () => {
-    const {logout, user} = useContext(AuthContext)
+    const {logout, user } = useContext(AuthContext)
+    
+
     return (
-        <div className="navbar  font-bold text-white">
+        <div className={`navbar  font-bold text-white`}>
             <div className="navbar-start">
                 <DropDown></DropDown>
                 <a className=" normal-case text-xl font-bold hidden lg:inline-block">Mah Heroes</a>

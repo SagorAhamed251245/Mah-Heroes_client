@@ -34,6 +34,7 @@ const UpdateMyToy = () => {
                     text: 'Your Toy info Updated Successful',
                     icon: 'success',
                     confirmButtonText: 'Cool'
+                    
                 })}
         })
 

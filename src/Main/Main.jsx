@@ -3,7 +3,9 @@ import NavBar from "../Shared/NavBar/NavBar";
 import Footer from "../Shared/Footer/Footer";
 
 
+
 const Main = () => {
+    
     return (
         <>
         <NavBar></NavBar>
