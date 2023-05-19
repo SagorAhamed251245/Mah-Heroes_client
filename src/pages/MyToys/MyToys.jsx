@@ -14,6 +14,14 @@ const MyToys = () => {
       .then(data => setMyToy(data))
   }, [user])
 
+  const handelDeleteToy = (id) => {
+
+    fetch(`http://localhost:5000/deleteProduct/${id}`, {
+      method: 'DELETE'
+    })
+
+  }  
+
   console.log(myToy);
 
   return (
@@ -62,7 +70,7 @@ const MyToys = () => {
               <td className="flex  flex-col gap-3 items-center justify-center">
                 <Link to={`/toy/${toy._id}`}><FaInfoCircle className="text-sky-500 text-3xl"></FaInfoCircle></Link>
                 <Link ><img className="w-7" src="../../../public/updated.png" alt="" /></Link>
-                <Link ><img className="w-7" src="../../../public/remove.png" alt="" /></Link>
+                <Link onClick={()=>handelDeleteToy(toy._id)} ><img className="w-7" src="../../../public/remove.png" alt="" /></Link>
               </td>
 
 
