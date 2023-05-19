@@ -61,7 +61,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Category</span>
                                             </label>
-                                            <input {...register("category")} type="text" placeholder="Action Figures" defaultValue="Action Figures" className="input input-bordered" />
+                                            <input {...register("category")} type="text" placeholder="Action Figures" defaultValue="Action Figures" required className="input input-bordered" />
 
                                         </div>
 
@@ -70,7 +70,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Sub Category</span>
                                             </label>
-                                            <select  {...register("sub_category")} className="select select-bordered w-full">
+                                            <select required {...register("sub_category")} className="select select-bordered w-full">
                                                 <option value="Marvel">Marvel</option>
                                                 <option value="DC Comics">DC Comics</option>
                                                 <option value="Star Wars">Star Wars</option>
@@ -84,7 +84,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Toy Name</span>
                                             </label>
-                                            <input {...register("toy_name")} type="text" placeholder="Toy Name" className="input input-bordered" />
+                                            <input required {...register("toy_name")} type="text" placeholder="Toy Name" className="input input-bordered" />
 
                                         </div>
                                         {/* 5  */}
@@ -93,30 +93,33 @@ const AddToy = () => {
                                     {/* right site  */}
                                     <div className="w-1/2">
 
-                                        <div className="form-control">
-                                            <label className="label">
-                                                <span className="label-text">Price</span>
-                                            </label>
-                                            <input {...register("price")} type="text" placeholder="0" className="input input-bordered" />
-
-                                        </div>
-
-                                        {/* 6  */}
-
-                                        <div className="form-control">
-                                            <label className="label">
-                                                <span className="label-text">Available Quantity</span>
-                                            </label>
-                                            <input {...register("available_quantity")} type="text" placeholder="0" className="input input-bordered" />
-
-                                        </div>
-                                        {/* 7  */}
 
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Toy Image</span>
                                             </label>
-                                            <input {...register("toy_image")} type="text" placeholder="url" className="input input-bordered" />
+                                            <input required {...register("toy_image")} type="text" placeholder="url" className="input input-bordered" />
+
+                                        </div>
+
+                                        {/* 6  */}
+                                          
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">Price</span>
+                                            </label>
+                                            <input required {...register("price")} type="text" placeholder="0" className="input input-bordered" />
+
+                                        </div>
+
+                                       
+                                        {/* 7  */}
+                                                   
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">Available Quantity</span>
+                                            </label>
+                                            <input required {...register("available_quantity")} type="text" placeholder="0" className="input input-bordered" />
 
                                         </div>
 
@@ -125,7 +128,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Rating</span>
                                             </label>
-                                            <input {...register("rating")} type="text" placeholder="0" className="input input-bordered" />
+                                            <input required {...register("rating")} type="text" placeholder="0" className="input input-bordered" />
 
                                         </div>
                                         {/* 9  */}
@@ -134,7 +137,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Description</span>
                                             </label>
-                                            <input {...register("description")} type="text" placeholder="Description" className="input input-bordered" />
+                                            <input required {...register("description")} type="text" placeholder="Description" className="input input-bordered" />
 
                                         </div>
 
