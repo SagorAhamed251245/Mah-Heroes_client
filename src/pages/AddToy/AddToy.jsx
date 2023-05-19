@@ -11,9 +11,11 @@ const AddToy = () => {
         handleSubmit,
         watch,
         formState: { errors }
+        
     } = useForm();
 
     const onSubmit = data => {
+        console.log(data);
          fetch(`http://localhost:5000/addProduct`, {
             method: 'POST',
             headers: {
@@ -61,7 +63,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Category</span>
                                             </label>
-                                            <input {...register("category")} type="text" placeholder="Action Figures" defaultValue="Action Figures" required className="input input-bordered" />
+                                            <input {...register("category")} type="text" placeholder="Action Figures" defaultValue="Action Figures"  className="input input-bordered" />
 
                                         </div>
 
@@ -70,7 +72,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Sub Category</span>
                                             </label>
-                                            <select required {...register("sub_category")} className="select select-bordered w-full">
+                                            <select  {...register("sub_category", { required: true })} className="select select-bordered w-full">
                                                 <option value="Marvel">Marvel</option>
                                                 <option value="DC Comics">DC Comics</option>
                                                 <option value="Star Wars">Star Wars</option>
@@ -84,7 +86,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Toy Name</span>
                                             </label>
-                                            <input required {...register("toy_name")} type="text" placeholder="Toy Name" className="input input-bordered" />
+                                            <input  {...register("toy_name" , { required: true })} type="text" placeholder="Toy Name" className="input input-bordered" />
 
                                         </div>
                                         {/* 5  */}
@@ -98,7 +100,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Toy Image</span>
                                             </label>
-                                            <input required {...register("toy_image")} type="text" placeholder="url" className="input input-bordered" />
+                                            <input {...register("toy_image" , { required: true })} type="text" placeholder="url" className="input input-bordered" />
 
                                         </div>
 
@@ -108,7 +110,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Price</span>
                                             </label>
-                                            <input required {...register("price")} type="text" placeholder="0" className="input input-bordered" />
+                                            <input  {...register("price" , {min: 0 , required: true }  )} type="number"  placeholder="0" className="input input-bordered" />
 
                                         </div>
 
@@ -119,7 +121,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Available Quantity</span>
                                             </label>
-                                            <input required {...register("available_quantity")} type="text" placeholder="0" className="input input-bordered" />
+                                            <input  {...register("available_quantity", {min: 1 , required: true })} type="number" placeholder="0" className="input input-bordered" />
 
                                         </div>
 
@@ -128,7 +130,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Rating</span>
                                             </label>
-                                            <input required {...register("rating")} type="text" placeholder="0" className="input input-bordered" />
+                                            <input  {...register("rating" , {min: 0, max: 5 , required: true})} type="number" placeholder="0" className="input input-bordered" />
 
                                         </div>
                                         {/* 9  */}
@@ -137,7 +139,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Description</span>
                                             </label>
-                                            <input required {...register("description")} type="text" placeholder="Description" className="input input-bordered" />
+                                            <input  {...register("description", { required: true}) } type="text" placeholder="Description" className="input input-bordered" />
 
                                         </div>
 

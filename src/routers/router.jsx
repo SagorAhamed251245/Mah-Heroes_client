@@ -30,8 +30,10 @@ const router = createBrowserRouter([
         loader: () => fetch(`http://localhost:5000/products/limit`)
       },
       {
-           path: '/addtoy',
-           element: <AddToy></AddToy>
+        path: '/addtoy',
+        element: <PrivateRoute>
+          <AddToy></AddToy>
+        </PrivateRoute>
       },
       {
         path: 'mytoys',
