@@ -9,7 +9,7 @@ const NavBar = () => {
 
 
     return (
-        <div className={`navbar  font-bold text-white`}>
+        <div className={`navbar  font-bold text-white md:w-11/12 mx-auto`}>
             <div className="navbar-start">
                 <DropDown></DropDown>
                 <a className=" normal-case text-xl font-bold hidden lg:inline-block">Mah Heroes</a>
