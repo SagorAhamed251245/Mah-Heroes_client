@@ -3,25 +3,26 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import { FaArrowsAltV, FaInfoCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
+import PageTitles from "../../Shared/PageTitles/PageTitles";
 
 
 const MyToys = () => {
   const { user } = useContext(AuthContext)
 
   const [myToy, setMyToy] = useState([])
-  const [sortPrice , setSortPrice ] = useState(false)
-  const handelPriceSort = (sort)=> {
+  const [sortPrice, setSortPrice] = useState(false)
+  const handelPriceSort = (sort) => {
     setSortPrice(sort)
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/mytoys/${user.email}/${sortPrice}`)
+    fetch(`https://mah-heros-server.vercel.app/mytoys/${user.email}/${sortPrice}`)
       .then(res => res.json())
       .then(data => setMyToy(data))
   }, [user, sortPrice])
 
 
-  
+
 
 
 
@@ -38,7 +39,7 @@ const MyToys = () => {
     }).then(result => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/deleteProduct/${id}`, {
+        fetch(`https://mah-heros-server.vercel.app/deleteProduct/${id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())
@@ -68,7 +69,8 @@ const MyToys = () => {
   return (
     <div className="overflow-x-auto mt-10">
 
-
+      <PageTitles titles='Mah Heroes | MY Toys'></PageTitles>
+      
       <div>
         <h1 className="text-3xl text-center my-10 font-bold text-white">My Toys</h1>
       </div>
@@ -88,7 +90,7 @@ const MyToys = () => {
             <th>Available Quantity</th>
             <th>Seller</th>
             <th></th>
-            <th onClick={()=> handelPriceSort(!sortPrice)} className="flex w-full justify-center"><FaArrowsAltV cursor={`pointer`} className={` text-3xl  text-center ${sortPrice ? 'text-primary' : 'text-green-500'}`}></FaArrowsAltV></th>
+            <th onClick={() => handelPriceSort(!sortPrice)} className="flex w-full justify-center"><FaArrowsAltV cursor={`pointer`} className={` text-3xl  text-center ${sortPrice ? 'text-primary' : 'text-green-500'}`}></FaArrowsAltV></th>
 
           </tr>
         </thead>

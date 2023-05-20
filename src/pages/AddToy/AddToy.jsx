@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import PageTitles from "../../Shared/PageTitles/PageTitles";
 
 const AddToy = () => {
     const { user } = useContext(AuthContext)
@@ -17,7 +18,7 @@ const AddToy = () => {
 
     const onSubmit = data => {
         console.log(data);
-        fetch(`http://localhost:5000/addProduct`, {
+        fetch(`https://mah-heros-server.vercel.app/addProduct`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -40,7 +41,7 @@ const AddToy = () => {
     };
     return (
         <div>
-
+               <PageTitles titles='Mah Heroes | Add Toys'></PageTitles>
             <div>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex w-full">

@@ -6,7 +6,7 @@ const CategoryCard = ({ product }) => {
 
     const { toy_name, toy_image, price, rating, _id } = product
     return (
-        <div data-aos="slide-up" className="card w-96  bg-base-100 shadow-xl border  text-white">
+        <div data-aos="slide-up" className="card w-96  bg-base-100 shadow-xl border  text-white ">
 
             <div className="h-[300px] flex">
                 <img className="object-cover w-auto  rounded-2xl" src={toy_image} alt={toy_name} />

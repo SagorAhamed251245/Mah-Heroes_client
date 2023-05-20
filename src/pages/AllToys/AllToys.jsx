@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import PageTitles from "../../Shared/PageTitles/PageTitles";
 
 
 const AllToys = () => {
@@ -18,7 +19,7 @@ const AllToys = () => {
     }, [FindAlltoys])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/getToyByName/${searchToy}`)
+        fetch(`https://mah-heros-server.vercel.app/getToyByName/${searchToy}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -32,16 +33,16 @@ const AllToys = () => {
     const handelClick = (event) => {
         event.preventDefault()
         const form = event.target;
-       
-       const text = form.findName.value
-       SetSearchToy(text);
+
+        const text = form.findName.value
+        SetSearchToy(text);
     }
 
     return (
         <div className="overflow-x-auto mt-10">
 
 
-
+            <PageTitles titles='Mah Heroes | All Toys'></PageTitles>
             <div>
                 <form onSubmit={handelClick} className="w-1/2 mx-auto my-10">
                     <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
@@ -66,7 +67,7 @@ const AllToys = () => {
                             </svg>
                         </div>
                         <input
-                            
+
                             type="text"
                             name='findName'
                             className="block w-full p-4 pl-10  text-white text-lg border border-gray-300 rounded-lg bg-transparent    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  "
@@ -76,7 +77,7 @@ const AllToys = () => {
                         <button
                             type="text"
                             className="text-white absolute right-2.5 bottom-2.5    focus:ring-4 focus:outline-none btn btn-primary font-medium rounded-lg text-sm px-4   "
-                            
+
                         >
                             Search
                         </button>

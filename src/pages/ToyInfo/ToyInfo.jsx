@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import PageTitles from "../../Shared/PageTitles/PageTitles";
 
 
 const ToyInfo = () => {
@@ -7,6 +8,8 @@ const ToyInfo = () => {
     console.log(toyinfo);
     return (
         <div className=' mt-5 w-[90%] mx-auto flex flex-col gap-24 h-[500px] text-white'>
+
+            <PageTitles titles='Mah Heroes | Toy Details'></PageTitles>
 
             <div className="flex   h-[700px]  ">
                 <div className="w-1/2 h-[700px] items-center justify-center  flex">
@@ -52,11 +55,11 @@ const ToyInfo = () => {
                         </p>
 
                         <p >
-                        <span className='font-bold text-primary'>Description:</span>
+                            <span className='font-bold text-primary'>Description:</span>
                             <span className=' font-semibold '> {description}</span>
 
                         </p>
-                        
+
                     </div>
 
                 </div>

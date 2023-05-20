@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: '/alltoys',
         element: <AllToys></AllToys>,
-        loader: () => fetch(`http://localhost:5000/products/limit`)
+        loader: () => fetch(`https://mah-heros-server.vercel.app/products/limit`)
       },
       {
         path: '/addtoy',
@@ -43,16 +43,16 @@ const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
-        path:'/updateToy/:id',
+        path: '/updateToy/:id',
         element: <UpdateMyToy></UpdateMyToy>,
-        loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://mah-heros-server.vercel.app/products/${params.id}`)
       },
       {
         path: '/toy/:id',
         element: <PrivateRoute>
           <ToyInfo></ToyInfo>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://mah-heros-server.vercel.app/products/${params.id}`)
       },
       {
         path: '/blogs',

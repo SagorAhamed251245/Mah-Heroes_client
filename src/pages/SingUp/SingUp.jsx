@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import PageTitles from "../../Shared/PageTitles/PageTitles";
 
 
 const SingUp = () => {
@@ -48,6 +49,7 @@ const SingUp = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200   font-bold">
+            <PageTitles titles='Mah Heroes | Sing up'></PageTitles>
             <div className="hero-content flex-col-reverse lg:flex-row-reverse">
                 <div className="text-center lg:text-left flex items-center flex-col md:flex-row">
 
