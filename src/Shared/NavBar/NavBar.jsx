@@ -13,7 +13,7 @@ const NavBar = () => {
             <div className="navbar-start">
                 <DropDown></DropDown>
                 <a className=" normal-case text-xl font-bold hidden lg:inline-block">Mah Heroes</a>
-                <img className="w-14 lg:inline-block hidden" src="herologo-1.png" alt="" />
+                <img  className="w-14 lg:inline-block hidden " src="herologo-1.png" alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="flex gap-5">
@@ -47,11 +47,13 @@ const NavBar = () => {
 
                         {user ? <>
                             <NavLink onClick={logout} to='/login'><button className="btn btn-primary text-white font-bold">Logout</button></NavLink>
-                            <div className="avatar online">
-                                <div className="w-10 mask mask-squircle">
+                           <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                           <div className="avatar online " >
+                                <div className="w-12 mask mask-squircle tooltip  " >
                                     <img src={user?.photoURL} />
                                 </div>
                             </div>
+                           </div>
                         </> : <>
                             <NavLink to='/login'><button className="btn btn-primary text-white font-bold">Login</button></NavLink>
                             <NavLink to='/singup'><button className="btn btn-primary text-white font-bold">SingUp</button></NavLink>

@@ -2,13 +2,19 @@ import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CategoryCard from './CategoryCard';
+import AOS from 'aos'; import 'aos/dist/aos.css';
+import 'aos/dist/aos.css';
 
 const ShopCategory = () => {
+    useEffect(() => {
+        AOS.init();
+      }, [])
+
     const [allProducts, setAllProducts] = useState([]);
     const [sub_category, setSub_Category] = useState('Marvel');
     const [category_filter, setCategory_filter] = useState([])
 
-    console.log(category_filter);
+   
 
     useEffect(() => {
         fetch(`http://localhost:5000/products`)
@@ -28,7 +34,7 @@ const ShopCategory = () => {
    
  
     return (
-        <div className='mt-20 w-11/12 mx-auto'>
+        <div data-aos="slide-up" className='mt-20 w-11/12 mx-auto'>
             <Tabs >
                 <TabList style={{ 'display': 'flex', justifyContent: 'space-around' , }}>
                     <Tab
@@ -63,7 +69,7 @@ const ShopCategory = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                <div className='flex  gap-5 justify-between mt-10 '>
+                <div className='flex  flex-col md:flex-row gap-5 items-center md:justify-between mt-10 '>
                     {
                         category_filter.slice(0 , 3).map(product => <CategoryCard
                         key={product._id}
@@ -73,7 +79,7 @@ const ShopCategory = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                <div className='flex  gap-5 justify-between mt-10 '>
+                <div className='flex  flex-col md:flex-row gap-5 items-center md:justify-between mt-10 '>
                     {
                         category_filter.slice(0 , 3).map(product => <CategoryCard
                         key={product._id}
@@ -83,7 +89,7 @@ const ShopCategory = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                <div className='flex  gap-5 justify-between mt-10 '>
+                <div className='flex  flex-col md:flex-row gap-5 items-center md:justify-between mt-10 '>
                     {
                         category_filter.slice(0 , 3).map(product => <CategoryCard
                         key={product._id}

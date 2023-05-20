@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
-import { FaInfoCircle } from "react-icons/fa";
+import { FaArrowsAltV, FaInfoCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 
@@ -9,14 +9,23 @@ const MyToys = () => {
   const { user } = useContext(AuthContext)
 
   const [myToy, setMyToy] = useState([])
+  const [sortPrice , setSortPrice ] = useState(false)
+  const handelPriceSort = (sort)=> {
+    setSortPrice(sort)
+  }
+
   useEffect(() => {
-    fetch(`http://localhost:5000/mytoys/${user.email}`)
+    fetch(`http://localhost:5000/mytoys/${user.email}/${sortPrice}`)
       .then(res => res.json())
       .then(data => setMyToy(data))
-  }, [user])
+  }, [user, sortPrice])
+
+
+  
+
+
 
   const handelDeleteToy = (id) => {
-
 
     Swal.fire({
       title: 'Are you sure?',
@@ -79,6 +88,7 @@ const MyToys = () => {
             <th>Available Quantity</th>
             <th>Seller</th>
             <th></th>
+            <th onClick={()=> handelPriceSort(!sortPrice)} className="flex w-full justify-center"><FaArrowsAltV cursor={`pointer`} className={` text-3xl  text-center ${sortPrice ? 'text-primary' : 'text-green-500'}`}></FaArrowsAltV></th>
 
           </tr>
         </thead>
@@ -99,6 +109,7 @@ const MyToys = () => {
               <td>{toy.sub_category}</td>
               <td>{toy.available_quantity}</td>
               <td>{toy.seller_name}</td>
+              <td></td>
               <td className="flex  flex-col gap-3 items-center justify-center">
                 <Link to={`/toy/${toy._id}`}><FaInfoCircle className="text-sky-500 text-3xl"></FaInfoCircle></Link>
                 <Link to={`/updateToy/${toy._id}`} ><img className="w-7" src="../../../public/updated.png" alt="" /></Link>

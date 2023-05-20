@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 
 const DropDown = () => {
     const { logout, user } = useContext(AuthContext)
-   
+
     return (
         <div className={` dropdown  text-white font-bold`}>
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,15 +25,17 @@ const DropDown = () => {
                     <li><NavLink to='/mytoys' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
                     >My Toys</NavLink></li>
 
-                    <li><NavLink to='/addtoy'className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
+                    <li><NavLink to='/addtoy' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
                     >Add A Toy</NavLink></li>
 
                     <NavLink onClick={logout} to='/' className={({ isActive }) => (isActive ? 'text-primary' : 'hover:text-primary')}
                     ><button className="btn btn-primary text-white font-bold">Logout</button></NavLink>
 
-                    <div className="avatar online">
-                        <div className="w-10 mask mask-squircle">
-                            <img src={user?.photoURL} />
+                    <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                        <div className="avatar online">
+                            <div className="w-12 mask mask-squircle">
+                                <img src={user?.photoURL} />
+                            </div>
                         </div>
                     </div>
                 </> : <>

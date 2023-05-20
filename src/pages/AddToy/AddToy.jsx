@@ -4,7 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const AddToy = () => {
- const {user}= useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
 
     const {
@@ -12,35 +12,35 @@ const AddToy = () => {
         handleSubmit,
         watch,
         formState: { errors }
-        
+
     } = useForm();
 
     const onSubmit = data => {
         console.log(data);
-         fetch(`http://localhost:5000/addProduct`, {
+        fetch(`http://localhost:5000/addProduct`, {
             method: 'POST',
             headers: {
-                'content-type' :  'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(data)
-         })
-         .then(res => res.json())
-         .then(result => {
-            console.log(result);
-            if(result.insertedId){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Toy Added Successful',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                  })
-            }
-         })
-         
-       };
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                if (result.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Toy Added Successful',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
+
+    };
     return (
         <div>
-            
+
             <div>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex w-full">
@@ -72,7 +72,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Category</span>
                                             </label>
-                                            <input {...register("category")} type="text" placeholder="Action Figures" defaultValue="Action Figures"  className="input input-bordered" />
+                                            <input {...register("category")} type="text" placeholder="Action Figures" defaultValue="Action Figures" className="input input-bordered" />
 
                                         </div>
 
@@ -95,7 +95,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Toy Name</span>
                                             </label>
-                                            <input  {...register("toy_name" , { required: true })} type="text" placeholder="Toy Name" className="input input-bordered" />
+                                            <input  {...register("toy_name", { required: true })} type="text" placeholder="Toy Name" className="input input-bordered" />
 
                                         </div>
                                         {/* 5  */}
@@ -109,28 +109,28 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Toy Image</span>
                                             </label>
-                                            <input {...register("toy_image" , { required: true })} type="text" placeholder="url" className="input input-bordered" />
+                                            <input {...register("toy_image", { required: true })} type="text" placeholder="url" className="input input-bordered" />
 
                                         </div>
 
                                         {/* 6  */}
-                                          
+
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Price</span>
                                             </label>
-                                            <input  {...register("price" , {min: 0 , required: true }  )} type="number"  placeholder="0" className="input input-bordered" />
+                                            <input  {...register("price", { min: 0, required: true })} type="text" placeholder="0" className="input input-bordered" />
 
                                         </div>
 
-                                       
+
                                         {/* 7  */}
-                                                   
+
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">Available Quantity</span>
                                             </label>
-                                            <input  {...register("available_quantity", {min: 1 , required: true })} type="number" placeholder="0" className="input input-bordered" />
+                                            <input  {...register("available_quantity", { min: 1, required: true })} type="number" placeholder="0" className="input input-bordered" />
 
                                         </div>
 
@@ -139,7 +139,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Rating</span>
                                             </label>
-                                            <input  {...register("rating" , {min: 0, max: 5 , required: true})} type="number" placeholder="0" className="input input-bordered" />
+                                            <input  {...register("rating", { min: 0, max: 5, required: true })} type="number" placeholder="0" className="input input-bordered" />
 
                                         </div>
                                         {/* 9  */}
@@ -148,7 +148,7 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Description</span>
                                             </label>
-                                            <input  {...register("description", { required: true}) } type="text" placeholder="Description" className="input input-bordered" />
+                                            <input  {...register("description", { required: true })} type="text" placeholder="Description" className="input input-bordered" />
 
                                         </div>
 

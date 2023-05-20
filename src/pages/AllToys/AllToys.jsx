@@ -1,21 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 
 const AllToys = () => {
-     const [searchToy , SetSearchToy] = useState("");
-     console.log(searchToy);
+    const [searchToy, SetSearchToy] = useState("");
+
+    const [alltoys, setAllToys] = useState([])
+    console.log(searchToy);
 
 
-    const alltoys = useLoaderData()
-     
+    const FindAlltoys = useLoaderData();
+
+    useEffect(() => {
+
+        setAllToys(FindAlltoys)
+
+    }, [FindAlltoys])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/getToyByName/${searchToy}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setAllToys(data);
+            });
+
+    }, [searchToy])
+
+
+
+    const handelClick = (event) => {
+        event.preventDefault()
+        const form = event.target;
+       
+       const text = form.findName.value
+       SetSearchToy(text);
+    }
+
     return (
         <div className="overflow-x-auto mt-10">
 
 
 
             <div>
-                <form className="w-1/2 mx-auto my-10">
+                <form onSubmit={handelClick} className="w-1/2 mx-auto my-10">
                     <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
                         Search
                     </label>
@@ -37,17 +65,18 @@ const AllToys = () => {
                                 ></path>
                             </svg>
                         </div>
-                        <input 
-                            onChange={(event)=> SetSearchToy(event.target.value)}
-                            type="search"
+                        <input
                             
+                            type="text"
+                            name='findName'
                             className="block w-full p-4 pl-10  text-white text-lg border border-gray-300 rounded-lg bg-transparent    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  "
                             placeholder="Search"
                             required
                         />
                         <button
-                            type="submit"
+                            type="text"
                             className="text-white absolute right-2.5 bottom-2.5    focus:ring-4 focus:outline-none btn btn-primary font-medium rounded-lg text-sm px-4   "
+                            
                         >
                             Search
                         </button>
