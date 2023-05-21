@@ -2,7 +2,8 @@ import PageTitles from "../../Shared/PageTitles/PageTitles";
 import Banner from "./Banner";
 import OurService from "./OurService/OurService";
 import ShopCategory from "./ShopCategory/ShopCategory";
-import UserReview from "./UserReview/UserReview";
+import UpdateNews from "./UpdateNews/UpdateNews";
+
 
 const Home = () => {
     return (
@@ -11,7 +12,7 @@ const Home = () => {
             <Banner></Banner>
             <ShopCategory></ShopCategory>
             <OurService></OurService>
-            <UserReview></UserReview>
+            <UpdateNews></UpdateNews>
         </div>
     );
 };
