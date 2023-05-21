@@ -2,6 +2,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
+import loadingPng from '../assets/lottie1.gif'
 
 
 const PrivateRoute = ({ children }) => {
@@ -12,7 +13,7 @@ const PrivateRoute = ({ children }) => {
 
     if (loading) {
         return <div className='w-full h-screen flex items-center justify-center bg-primary'>
-             <img  src="../../public/lottie1.gif" alt="" />
+             <img  src={loadingPng} alt="" />
            </div>
 
     }

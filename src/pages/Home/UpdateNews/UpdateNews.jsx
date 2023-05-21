@@ -1,6 +1,8 @@
 import AOS from 'aos'; import 'aos/dist/aos.css';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import person1 from '../../../assets/person1.jpg'
+import person2 from '../../../assets/person2.jpg'
 
 
 const UpdateNews = () => {
@@ -14,7 +16,7 @@ const UpdateNews = () => {
             <div data-aos="fade-right" className="hero lg:h-96 h-auto bg-base-100 border rounded-xl">
                 <div className="hero-content p-0 m-0 flex-col lg:flex-row h-auto lg:h-96 w-auto">
                     <div className="h-96 p-0 m-0 flex w-auto lg:w-[40%] overflow-hidden">
-                        <img src="/public/person1.jpg" className=" h-[380px] my-auto rounded-lg  object-cover w-auto" />
+                        <img src={person1} className=" h-[380px] my-auto rounded-lg  object-cover w-auto" />
                     </div>
                     <div className="w-[60%]">
                         <h1 className="text-3xl font-bold text-white">March Official Update News!</h1>
@@ -29,7 +31,7 @@ const UpdateNews = () => {
             <div data-aos="fade-left"  className="hero lg:h-96 h-auto bg-base-100 border rounded-xl">
                 <div className="hero-content p-0 m-0 flex-col lg:flex-row h-auto lg:h-96 w-auto">
                     <div className="h-96 p-0 m-0 flex w-auto lg:w-[40%] overflow-hidden">
-                        <img src="/public/person2.jpg" className=" h-[380px] my-auto rounded-lg  object-cover w-auto" />
+                        <img src={person2} className=" h-[380px] my-auto rounded-lg  object-cover w-auto" />
                     </div>
                     <div className="w-[60%]">
                         <h1 className="text-3xl font-bold text-white">Exciting Updates at Mah Heroes!</h1>

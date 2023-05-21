@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { FaArrowsAltV, FaInfoCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import PageTitles from "../../Shared/PageTitles/PageTitles";
+import updatePng from '../../assets/updated.png'
+import removePng from '../../assets/remove.png'
 
 
 const MyToys = () => {
@@ -114,8 +116,8 @@ const MyToys = () => {
               <td></td>
               <td className="flex  flex-col gap-3 items-center justify-center">
                 <Link to={`/toy/${toy._id}`}><FaInfoCircle className="text-sky-500 text-3xl"></FaInfoCircle></Link>
-                <Link to={`/updateToy/${toy._id}`} ><img className="w-7" src="../../../public/updated.png" alt="" /></Link>
-                <Link onClick={() => handelDeleteToy(toy._id)} ><img className="w-7" src="../../../public/remove.png" alt="" /></Link>
+                <Link to={`/updateToy/${toy._id}`} ><img className="w-7" src={updatePng } alt="" /></Link>
+                <Link onClick={() => handelDeleteToy(toy._id)} ><img className="w-7" src={removePng} alt="" /></Link>
               </td>
 
 

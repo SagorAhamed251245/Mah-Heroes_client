@@ -1,12 +1,12 @@
-
+import logoIcon  from '../../assets/herologo-1.png'
 
 const Footer = () => {
     return (
-        <footer className=" bg-base-200 mt-20 h-auto lg:h-96">
+        <footer className=" bg-base-200 mt-32  h-auto lg:h-96">
             <div className="w-full mx-auto grid gap-3 lg:grid-cols-3 grid:col-1 text-white py-10 h-full my-auto">
                 <div className="text-center col-span-1 flex flex-col item-center h-full justify-center">
                     <div className="flex flex-col items-center justify-center">
-                        <img className="w-32" src="/public/herologo-1.png" alt="" />
+                        <img className="w-32" src={logoIcon} alt="" />
                         <p className="text-3xl font-bold text-primary">Mha Heroes</p>
                     </div>
                     <div>

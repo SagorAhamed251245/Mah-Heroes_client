@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import DropDown from "./DropDown";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import logoIcon from '../../assets/herologo-1.png'
 
 
 const NavBar = () => {
@@ -13,7 +14,7 @@ const NavBar = () => {
             <div className="navbar-start">
                 <DropDown></DropDown>
                 <a className=" normal-case text-xl font-bold hidden lg:inline-block">Mah Heroes</a>
-                <img  className="w-14 lg:inline-block hidden " src="herologo-1.png" alt="" />
+                <img  className="w-14 lg:inline-block hidden " src={logoIcon} alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="flex gap-5">

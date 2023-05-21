@@ -7,7 +7,7 @@ const ToyInfo = () => {
     const { toy_name, toy_image, price, rating, description, seller_name, seller_email, category, sub_category, available_quantity } = toyinfo
     console.log(toyinfo);
     return (
-        <div className=' mt-5 w-[90%] mx-auto flex flex-col gap-24 h-[500px] text-white'>
+        <div className=' mt-5 w-[90%] mx-auto flex flex-col gap-24 h-[600px] text-white'>
 
             <PageTitles titles='Mah Heroes | Toy Details'></PageTitles>
 

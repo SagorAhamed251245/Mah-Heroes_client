@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import PageTitles from "../../Shared/PageTitles/PageTitles";
+import logoIcon from '../../assets/herologo-1.png'
 
 
 const Login = () => {
@@ -53,7 +54,7 @@ const Login = () => {
             <div className="hero-content flex-col-reverse lg:flex-row-reverse">
                 <div className="text-center lg:text-left flex items-center flex-col md:flex-row">
 
-                    <img className="md:w-[50%]" src="herologo-1.png" alt="" />
+                    <img className="md:w-[50%]" src={logoIcon} alt="" />
                     <h1 className="text-6xl text-center font-bold text-white">Let's Go <span className="text-primary">Hero</span></h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
