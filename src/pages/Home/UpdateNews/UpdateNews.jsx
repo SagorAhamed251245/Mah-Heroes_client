@@ -13,7 +13,7 @@ const UpdateNews = () => {
         <div className="flex flex-col lg:flex-row  gap-5 mt-24 w-11/12 mx-auto ">
 
             {/* 1 */}
-            <div data-aos="fade-right" className="hero lg:h-96 h-auto bg-base-100 border rounded-xl">
+            <div data-aos="fade-right" className="hero lg:h-96 h-auto bg-base-100 border rounded-xl overflow-hidden">
                 <div className="hero-content p-0 m-0 flex-col lg:flex-row h-auto lg:h-96 w-auto">
                     <div className="h-96 p-0 m-0 flex w-auto lg:w-[40%] overflow-hidden">
                         <img src={person1} className=" h-[380px] my-auto rounded-lg  object-cover w-auto" />
@@ -28,7 +28,7 @@ const UpdateNews = () => {
             </div>
             {/* 1 */}
 
-            <div data-aos="fade-left"  className="hero lg:h-96 h-auto bg-base-100 border rounded-xl">
+            <div data-aos="fade-left"  className="hero lg:h-96 h-auto bg-base-100 border rounded-xl overflow-hidden">
                 <div className="hero-content p-0 m-0 flex-col lg:flex-row h-auto lg:h-96 w-auto">
                     <div className="h-96 p-0 m-0 flex w-auto lg:w-[40%] overflow-hidden">
                         <img src={person2} className=" h-[380px] my-auto rounded-lg  object-cover w-auto" />

@@ -41,7 +41,7 @@ const NavBar = () => {
             </div>
             <div className="navbar-end ">
                 <a className=" normal-case text-xl font-bold lg:hidden">Mah Heroes</a>
-                <img className="w-14 lg:hidden" src="herologo-1.png" alt="" />
+                <img className="w-14 lg:hidden" src={logoIcon} alt="" />
 
                 <div className="hidden lg:inline-flex">
                     <div className="menu menu-horizontal px-1 gap-3 ">

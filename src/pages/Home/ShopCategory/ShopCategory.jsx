@@ -34,7 +34,7 @@ const ShopCategory = () => {
 
 
     return (
-        <div data-aos="slide-up" className='mt-20 w-11/12 mx-auto'>
+        <div data-aos="slide-up" className='mt-20 w-11/12 mx-auto overflow-hidden'>
             <Tabs >
                 <TabList style={{ 'display': 'flex', justifyContent: 'space-around', }}>
                     <Tab

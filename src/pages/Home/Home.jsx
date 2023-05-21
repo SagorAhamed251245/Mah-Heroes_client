@@ -8,7 +8,7 @@ import UpdateNews from "./UpdateNews/UpdateNews";
 
 const Home = () => {
     return (
-        <div>
+        <div className="overflow-hidden">
             <PageTitles titles='Mah Heroes'></PageTitles>
             <Banner></Banner>
             <ShopCategory></ShopCategory>
