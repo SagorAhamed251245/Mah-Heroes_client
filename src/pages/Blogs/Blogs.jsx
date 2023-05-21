@@ -7,7 +7,7 @@ const Blogs = () => {
 
 
             <div >
-
+               <PageTitles titles='Mah Heroes | Blogs'></PageTitles>
                 <div className='text-center text-3xl font-bold text-primary mb-10'>
                     <p>Question And Answer</p>
                 </div>
